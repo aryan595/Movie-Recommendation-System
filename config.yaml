@@ -1,0 +1,41 @@
+cookie:
+  expiry_days: 90
+  key: some_random_secret_key
+  name: recommender_cookie
+credentials:
+  usernames:
+    aryan:
+      email: aryankarawale58@gmail.com
+      name: Aryan Karawale
+      password: $2b$12$XI7s6rMYefa1g72P1ihcVOSLoaxDg1E5d7H8P6lLPenFUbI57mppW
+    hey:
+      email: hey@gmail.com
+      name: hey
+      password: $2b$12$31LOfVCiG/7dxWZ99bc1uuj9KJ.rawZt8xlDOS3EV/jKvItV.HUK2
+      user_id: 612
+    hi:
+      email: hi@gmail.com
+      name: hi
+      password: $2b$12$aef6QytNt/UKtfrwPOSpVewWBHOq8esuha5HNiIEErBxNqhRo7K1u
+    sam:
+      email: sam
+      name: sam
+      password: $2b$12$itVukXzlatjijHEf8TdqpuQBjRGlRt5vYxK7pvHYJ1P9nqzZgvQ8e
+      user_id: 611
+    user_1:
+      email: user1@email.com
+      name: User One
+      password: $2b$12$l3iiEy7XAI.f5lPb.vD7weOxKLsRLdFaoYnLGc7UhJaUijooBAC3S
+    user_267:
+      email: user267@email.com
+      name: User 267
+      password: $2b$12$PzD6dXu1plp5iyxWen4QceZVvsu95EtxB32Aat7xq.pb8A3YZyCwO
+    user_525:
+      email: user525@email.com
+      name: User 525
+      password: $2b$12$gJgXqAyimngOJT6GgXXeC.GeWTTg//e/hPWb9.gIZPtyrJIWI09Iy
+    user_91:
+      email: user91@email.com
+      name: User Ninety-One
+      password: $2b$12$BuQqXSlYVNtTvOxdDw2cTu7jq1vFTIoD8U92dnFNHryqO8PjRN7r2
+      user_id: 91

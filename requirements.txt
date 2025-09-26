@@ -1,0 +1,9 @@
+streamlit
+streamlit-authenticator
+pandas
+numpy
+tensorflow
+scikit-learn
+PyYAML
+bcrypt
+plotly
