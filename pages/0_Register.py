@@ -4,16 +4,18 @@ import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
 from streamlit_authenticator.utilities import Hasher
-import pandas as pd  # <-- Import Pandas
+import pandas as pd
 
 st.set_page_config(layout="wide", page_title="Register")
 st.title("🔐 Register a New Account")
 
+# --- THIS IS THE FIX: Load the config file correctly ---
 try:
     with open('config.yaml') as file:
         config = yaml.load(file, Loader=SafeLoader)
 except FileNotFoundError:
-    config = {'credentials': {'usernames': {}}} # Create config if it doesn't exist
+    # If the file doesn't exist, create a default structure
+    config = {'credentials': {'usernames': {}}, 'cookie': {}}
 
 # Create a registration form
 with st.form("Register User"):
@@ -32,28 +34,26 @@ if submitted:
     elif username in config['credentials']['usernames']:
         st.error("This username already exists. Please choose another.")
     else:
-        # --- NEW LOGIC: Assign a New, Unique User ID ---
         try:
-            # Load ratings to find the highest existing userId
             ratings_df = pd.read_csv('ratings_clean_final.csv')
             max_user_id = ratings_df['userId'].max()
             new_user_id = max_user_id + 1
-        except FileNotFoundError:
-            # If no ratings file, this is the very first user (after our pre-builts)
-            new_user_id = 611 # Our data stops at 610, so 611 is the first new one
+        except (FileNotFoundError, pd.errors.EmptyDataError):
+            new_user_id = 611
 
-        # Hash the password
         hashed_password = Hasher.hash(password)
         
-        # Add the new user to our config dictionary
+        # Add the new user to the config dictionary
         config['credentials']['usernames'][username] = {
             'email': email,
             'name': name,
             'password': hashed_password,
-            'user_id': int(new_user_id)  # <-- We save their new numeric ID!
+            'user_id': int(new_user_id),
+            'role': 'user'
         }
         
-        # Save the updated config back to the file
+        # --- THIS IS ALSO THE FIX: Save the updated config back to the file ---
+        # This ensures the 'cookie' section is preserved
         with open('config.yaml', 'w') as file:
             yaml.dump(config, file, default_flow_style=False)
             
