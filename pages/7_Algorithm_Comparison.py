@@ -26,10 +26,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- The rest of your page code starts here ---
-st.title("📊 Algorithm Performance Comparison")
-# ... (etc.)
-
 # --- Security: Add the "Guard Clause" ---
 if "authentication_status" not in st.session_state or st.session_state["authentication_status"] != True:
     st.error("You must log in to view this page. Please go to the Home page to log in.")
